@@ -25,7 +25,7 @@ class RobloxSolver(Solver):
 
     def getRobloxPublicKey(self) -> str:
         allKeys = requests.get("https://apis.roblox.com/captcha/v1/metadata").json()["funCaptchaPublicKeys"]
-        return allKeys[self.captchaType]
+        return allKeys[self.captchaType.value]
 
 class OutlookSolver(Solver):
     def __init__(self, apiKey: str, proxy: str = None, publicKey: str = "B7D8911C-5CC8-A9A3-35B0-554ACEE604DA") -> None:
