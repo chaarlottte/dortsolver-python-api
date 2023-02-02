@@ -22,7 +22,7 @@ solver = dort.Solver(
     siteUrl="https://iframe.arkoselabs.com", # The URL of the site you are wishing to solve on (e.g. https://iframe.arkoselabs.com for outlook)
     apiUrl="https://client-api.arkoselabs.com", # Optional. Defaults to https://client-api.arkoselabs.com/.
     blob="blob", # Optional. Not needed for Outlook, or any other site I've tried besides ROBLOX.
-    proxy="socks5://user:pass@host:port"
+    proxy="socks5://user:pass@host:port" # Optional.
 )
 
 # Returns the game token as a str.
