@@ -35,6 +35,8 @@ print(token)
 
 ### Outlook Example
 ```python
+import dort
+
 outlookSolver = dort.OutlookSolver(
     apiKey="your-api-key",
     proxy="socks5://user:pass@host:port" # Optional. Dort's proxies work best for Outlook, but ig you can use your own?
@@ -46,7 +48,9 @@ outlookToken = outlookSolver.solve()
 
 ### ROBLOX Example
 ```python
+import dort
 from dort.builtin import RobloxCaptchaType
+
 robloxSolver = dort.RobloxSolver(
     apiKey="your-api-key",
     # Roblox has a different public key (that they change weekly or so) for each task, this will automatically fetch them for you!
