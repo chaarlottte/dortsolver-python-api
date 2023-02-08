@@ -17,7 +17,7 @@ class RobloxCaptchaType(Enum):
     REDEEM_GIFTCARD = "ACTION_TYPE_WEB_GAMECARD_REDEMPTION"
 
 class RobloxSolver(Solver):
-    def __init__(self, apiKey: str, captchaType: RobloxCaptchaType, blob: str = None, proxy: str = None) -> None:
+    def __init__(self, apiKey: str, captchaType: RobloxCaptchaType, blob: str, proxy: str = None) -> None:
         self.captchaType = captchaType
 
         pKey = self.getRobloxPublicKey()
