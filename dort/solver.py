@@ -35,7 +35,7 @@ class Solver():
             body.update({ "proxy_url": self.proxy })
 
         try:
-            resp = requests.post("https://captcha-api.slave-auction.shop/solve/fc", json=body)
+            resp = requests.post("https://api.dort.shop/captcha/solve/fc", json=body)
             if "error" in resp.json():
                 if retry:
                     return self.solve(retry=retry)
