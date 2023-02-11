@@ -88,7 +88,7 @@ for x in address.getEmailsFromSender("noreply@discord.com"): # This will do the 
     print(x.subject)
 ```
 
-You can also simply login to any outlook/hotmail email address and check it with this API, but it's essentially wrapping a pre-existing IMAP library, so it may be in your best interest to instead just use that. You can find said IMAP library (here)[https://pypi.org/project/imap-tools/].
+You can also simply login to any outlook/hotmail email address and check it with this API, but it's essentially wrapping a pre-existing IMAP library, so it may be in your best interest to instead just use that. You can find said IMAP library [here](https://pypi.org/project/imap-tools/).
 
 ```python
 import dort
