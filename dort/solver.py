@@ -1,5 +1,5 @@
 import requests
-from dort.exceptions import *
+from .exceptions import *
 
 class Solver():
     def __init__(self, 

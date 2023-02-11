@@ -5,12 +5,12 @@ Using [dort](https://github.com/discord-trollering)'s API, which you can purchas
 
 Not going to be hosted on pip for now, maybe later when I have more time lol.
 
-
+Now also featuring Dort's tempmail services! You can purchase it at [discord.gg/emails](https://discord.gg/emails).
 
 ## Quick, bad documentation
 
 ### Installation
-Drag the `dort` folder into your project. The only requirement is the `requests` module, which you can install with `pip install requests`.
+Drag the `dort` folder into your project. The only requirement is the `requests` module, which you can install with `pip install requests imap-tools`.
 
 ### Simple example
 ```python
@@ -61,4 +61,42 @@ robloxSolver = dort.RobloxSolver(
 
 # And, of course, simply get the token as such:
 robloxToken = robloxSolver.solve()
+```
+
+### DortGen Email Example
+```python
+import dort
+from imap_tools import MailMessage
+
+mail = dort.DortMail("apiKey") # Replace with your API key.
+
+print(mail.getTypes()) # Print out the currently available email types.
+print(mail.getBalance()) # Print out your current balance.
+
+dortMail = mail.purchaseMails(type=1, amount=1)[0] # Returns an array of type DortMailAddress.
+
+x: MailMessage # This is included with the imap_tools library, used for fetching emails.
+for x in dortMail.getMailbox(): # Get the entire mailbox
+    print(x.subject) # Print out the subject of the message.
+
+x: MailMessage # This is included with the imap_tools library, used for fetching emails.
+for x in dortMail.getMailbox(): # Get the entire mailbox
+    print(x.subject) # Print out the subject of the message.
+
+x: MailMessage
+for x in address.getEmailsFromSender("noreply@discord.com"): # This will do the same as above, but only show emails from a specific address.
+    print(x.subject)
+```
+
+You can also simply login to any outlook/hotmail email address and check it with this API, but it's essentially wrapping a pre-existing IMAP library, so it may be in your best interest to instead just use that. You can find said IMAP library (here)[https://pypi.org/project/imap-tools/].
+
+```python
+import dort
+from imap_tools import MailMessage
+
+address = dort.DortMailAddress("stevemolon75353@outlook.com", "L3yf$DortGen") # Login to account with email and password
+
+x: MailMessage # This is included with the imap_tools library, used for fetching emails.
+for x in dortMail.getMailbox(): # Get the entire mailbox
+    print(x.subject) # Print out the subject of the message.
 ```

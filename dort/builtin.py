@@ -1,6 +1,6 @@
 import requests
-from dort.exceptions import *
-from dort.solver import *
+from .exceptions import *
+from .solver import *
 from enum import Enum
 
 class RobloxCaptchaType(Enum):
