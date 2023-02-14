@@ -1,5 +1,5 @@
 from requests import Response
-from .exceptions import *
+from ..exceptions import InvalidKeyException
 from imap_tools import MailBox, MailMessage, AND
 import requests, json
 
