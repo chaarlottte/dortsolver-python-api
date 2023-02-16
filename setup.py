@@ -6,11 +6,15 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="dort",
-    version="1.0",
+    version="1.1",
     description="dort solver/email api wrapper for python",
     url="https://github.com/chaarlottte/dortsolver-python-api",
     author="chaarlottte",
-    packages=[ "dort" ],
+    packages=[ 
+        "dort",
+        "dort.captcha",
+        "dort.mail"
+    ],
     install_requires=[ 
         "imap-tools",
         "requests"

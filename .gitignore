@@ -1,2 +1,3 @@
 .venv/
 dort.egg-info/
+dist/
