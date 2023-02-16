@@ -10,9 +10,8 @@ Now also featuring Dort's tempmail services! You can purchase it at [discord.gg/
 ## Quick, bad documentation
 
 ### Installation
-Drag the `dort` folder into your project. The only requirement are the `requests` module and the `imap-tools` module, both of which you can install as such:
 ```sh
-$ pip install requests imap-tools
+$ pip install dort
 ```
 
 ### Solve FunCaptcha
