@@ -1,6 +1,5 @@
-from dort.captcha import HCaptchaTask, FuncaptchaTask
+from dort.captcha import HCaptchaTask, FuncaptchaTask, ReCaptchaV3Task
 import os
-
 
 funcapSolver = FuncaptchaTask(
     apiKey=os.getenv("api_key"), # Your DortSolver API key.
@@ -10,7 +9,6 @@ funcapSolver = FuncaptchaTask(
     blob="blob", # Optional. Not needed for Outlook, or any other site I've tried besides ROBLOX.
     #proxy="socks5://user:pass@host:port"
 )
-
 print(funcapSolver.solve())
 
 hcapSolver = HCaptchaTask(
@@ -19,5 +17,12 @@ hcapSolver = HCaptchaTask(
     siteUrl="https://accounts.hcaptcha.com/demo/", # The URL of the site you are wishing to solve on 
     #proxy="socks5://user:pass@host:port" # (Optional) Your proxy URL. Formatted as protocol://user:pass@host:port
 )
-
 print(hcapSolver.solve())
+
+recapSolver = ReCaptchaV3Task(
+    apiKey=os.getenv("api_key"),
+    publicKey="6LdyC2cUAAAAACGuDKpXeDorzUDWXmdqeg-xy696", 
+    siteUrl="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php",
+    callback="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php?token="
+)
+print(recapSolver.solve())

@@ -1,52 +1,39 @@
 from .task import TaskBase
 from ..exceptions import InvalidKeyException
 
-class FuncaptchaTask(TaskBase):
+class ReCaptchaV3Task(TaskBase):
     def __init__(self, 
                 apiKey: str, 
                 publicKey: str,
                 siteUrl: str, 
-                blob: str = None, 
-                apiUrl: str = "https://client-api.arkoselabs.com",
-                proxy: str = None,
-                userAgent: str = None,
-                type: str = "AUDIO") -> None:
+                callback: str = None,
+                type: str = "invisible",
+                proxy: str = None) -> None:
         super().__init__(apiKey, publicKey)
-        self.blob = blob
-        self.apiUrl = apiUrl
         self.siteUrl = siteUrl
         self.proxy = proxy
-        self.userAgent = userAgent
+        self.callback = callback
         self.type = type
 
         if self.siteUrl.endswith("/"): self.siteUrl = self.siteUrl[:-1]
-        if self.apiUrl.endswith("/"): self.apiUrl = self.apiUrl[:-1]
-        if userAgent is not None:
-            self.session.headers.update({
-                "User-Agent": self.userAgent
-            })
         pass
 
     def solve(self) -> str:
         body = {
-          "type": self.type,
           "api_key": self.apiKey,
           "site_key": self.publicKey,
           "site_url": self.siteUrl,
-          "surl": self.apiUrl,
+          "type": self.type
         }
-
-        if self.userAgent is not None:
-            body.update({ "user_agent": self.userAgent })
 
         if self.proxy is not None:
             body.update({ "proxy_url": self.proxy })
 
-        if self.blob is not None:
-            body.update({ "data": { "blob": self.blob } })
+        if self.callback is not None:
+            body.update({ "callback": self.callback })
 
-        resp = self.post(f"{self.baseUrl}/fc", json=body)
-        
+        resp = self.post(f"{self.baseUrl}/rc3", json=body)
+
         if resp.status_code == 200:
             if "game[token]" in resp.text:
                 return resp.json().get("game[token]")

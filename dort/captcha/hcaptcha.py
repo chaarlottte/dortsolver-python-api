@@ -3,10 +3,10 @@ from ..exceptions import InvalidKeyException
 
 class HCaptchaTask(TaskBase):
     def __init__(self, 
-                 apiKey: str, 
-                 publicKey: str,
-                 siteUrl: str, 
-                 proxy: str = None,) -> None:
+                apiKey: str, 
+                publicKey: str,
+                siteUrl: str, 
+                proxy: str = None) -> None:
         super().__init__(apiKey, publicKey)
         self.siteUrl = siteUrl
         self.proxy = proxy
