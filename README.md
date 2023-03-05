@@ -18,7 +18,6 @@ $ pip install dort
 ```python
 from dort.captcha import FuncaptchaTask
 
-
 funcapSolver = FuncaptchaTask(
     apiKey="your api key", # Your DortSolver API key.
     publicKey="B7D8911C-5CC8-A9A3-35B0-554ACEE604DA", # The Funcaptcha public key of the website you wish to solve on.
@@ -43,6 +42,19 @@ hcapSolver = HCaptchaTask(
 )
 
 print(hcapSolver.solve())
+```
+
+### Solve ReCaptchaV3
+```python
+from dort.captcha import ReCaptchaV3Task
+
+recapSolver = ReCaptchaV3Task(
+    apiKey="your api key",
+    publicKey="6LdyC2cUAAAAACGuDKpXeDorzUDWXmdqeg-xy696", 
+    siteUrl="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php",
+    callback="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php?token="
+)
+print(recapSolver.solve())
 ```
 
 ### DortGen Email Example

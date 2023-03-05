@@ -1,3 +1,5 @@
 .venv/
 dort.egg-info/
 dist/
+note_for_char.txt
+release.bat
