@@ -6,6 +6,7 @@ class TaskBase():
         self.publicKey = publicKey
         self.baseUrl = "https://api.dort.shop/captcha/solve"
         self.session = requests.Session()
+        self.session.headers.update({ "User-Agent": "chaarlottte.dev" })
         pass
 
     def solve(self) -> str:

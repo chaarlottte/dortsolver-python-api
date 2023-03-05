@@ -13,7 +13,6 @@ funcapSolver = FuncaptchaTask(
 
 print(funcapSolver.solve())
 
-
 hcapSolver = HCaptchaTask(
     apiKey=os.getenv("api_key"), # Your DortSolver API key.
     publicKey="a5f74b19-9e45-40e0-b45d-47ff91b7a6c2",  # The HCaptcha public key of the website you wish to solve on.

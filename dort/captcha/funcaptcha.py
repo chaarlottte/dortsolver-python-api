@@ -9,13 +9,15 @@ class FuncaptchaTask(TaskBase):
                  blob: str = None, 
                  apiUrl: str = "https://client-api.arkoselabs.com",
                  proxy: str = None,
-                 userAgent: str = None) -> None:
+                 userAgent: str = None,
+                 type: str = "AUDIO") -> None:
         super().__init__(apiKey, publicKey)
         self.blob = blob
         self.apiUrl = apiUrl
         self.siteUrl = siteUrl
         self.proxy = proxy
         self.userAgent = userAgent
+        self.type = type
 
         if self.siteUrl.endswith("/"): self.siteUrl = self.siteUrl[:-1]
         if self.apiUrl.endswith("/"): self.apiUrl = self.apiUrl[:-1]
@@ -27,7 +29,7 @@ class FuncaptchaTask(TaskBase):
 
     def solve(self) -> str:
         body = {
-          "type": "ACCURATE",
+          "type": self.type,
           "api_key": self.apiKey,
           "site_key": self.publicKey,
           "site_url": self.siteUrl,
