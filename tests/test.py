@@ -1,4 +1,4 @@
-from dort.captcha import HCaptchaTask, FuncaptchaTask, ReCaptchaV3Task
+from dort.captcha import HCaptchaTask, FuncaptchaTask, ReCaptchaV3Task, HCaptchaEnterpriseTask
 import os
 
 funcapSolver = FuncaptchaTask(
@@ -26,3 +26,11 @@ recapSolver = ReCaptchaV3Task(
     callback="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php?token="
 )
 print(recapSolver.solve())
+
+hcapEnterpriseSolver = HCaptchaEnterpriseTask(
+    apiKey=os.getenv("api_key"), # Your DortSolver API key.
+    publicKey="4c672d35-0701-42b2-88c3-78380b0db560",  # The HCaptcha public key of the website you wish to solve on.
+    siteUrl="https://discord.com", # The URL of the site you are wishing to solve on 
+    #proxy="socks5://user:pass@host:port" # (Optional) Your proxy URL. Formatted as protocol://user:pass@host:port
+)
+print(hcapEnterpriseSolver.solve())
