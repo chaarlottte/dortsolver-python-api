@@ -1,5 +1,5 @@
 from .task import TaskBase
-from ..exceptions import InvalidKeyException
+from ..exceptions import InvalidKeyException, SolverErrorException
 from typing import Literal
 
 class FuncaptchaTask(TaskBase):
@@ -47,11 +47,19 @@ class FuncaptchaTask(TaskBase):
             body.update({ "data": { "blob": self.blob } })
 
         resp = self.post(f"{self.baseUrl}/fc", json=body)
-        
-        if resp.status_code == 200:
-            if "game[token]" in resp.text:
-                return resp.json().get("game[token]")
+
+        try:
+            if resp.json().get("solver[error]") is not None:
+                error = resp.json().get("solver[error]")
+                if error == "no user found for provided api key.":
+                    raise InvalidKeyException("Your API key is invalid.")
+                else:
+                    raise SolverErrorException(error)
             else:
-                return self.solve()
-        else:
-            raise InvalidKeyException("Your API key is invalid.")
+                if resp.status_code == 200:
+                    if "game[token]" in resp.text:
+                        return resp.json().get("game[token]")
+                    else:
+                        return self.solve()
+        except Exception as e:
+            raise SolverErrorException(e)
