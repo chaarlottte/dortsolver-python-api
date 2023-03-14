@@ -3,8 +3,6 @@
 
 Using [dort](https://github.com/discord-trollering)'s API, which you can purchase at [discord.gg/funcaptcha](https://discord.gg/funcaptcha).
 
-Not going to be hosted on pip for now, maybe later when I have more time lol.
-
 Now also featuring Dort's tempmail services! You can purchase it at [discord.gg/emails](https://discord.gg/emails).
 
 ## Quick, bad documentation
@@ -44,7 +42,7 @@ hcapSolver = HCaptchaTask(
 print(hcapSolver.solve())
 ```
 
-### Solve ReCaptchaV3
+### Solve ReCaptchaV3 (DEPRECATED!!)
 ```python
 from dort.captcha import ReCaptchaV3Task
 
