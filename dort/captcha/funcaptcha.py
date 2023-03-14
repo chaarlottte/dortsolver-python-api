@@ -1,5 +1,6 @@
 from .task import TaskBase
 from ..exceptions import InvalidKeyException
+from typing import Literal
 
 class FuncaptchaTask(TaskBase):
     def __init__(self, 
@@ -10,7 +11,7 @@ class FuncaptchaTask(TaskBase):
                 apiUrl: str = "https://client-api.arkoselabs.com",
                 proxy: str = None,
                 userAgent: str = None,
-                type: str = "AUDIO") -> None:
+                type: Literal["audio-test", "image-test", "image-prod-test"] = "audio-test") -> None:
         super().__init__(apiKey, publicKey)
         self.blob = blob
         self.apiUrl = apiUrl
