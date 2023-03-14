@@ -1,7 +1,7 @@
 # DortSolver Python API
 (absolute insanity)
 
-Using [dort](https://github.com/discord-trollering)'s API, which you can purchase at [discord.gg/funcaptcha](https://discord.gg/funcaptcha).
+Using [dort](https://github.com/discord-trollering)'s API, which you can purchase at [discord.gg/dort-captcha](https://discord.gg/dort-captcha).
 
 Now also featuring Dort's tempmail services! You can purchase it at [discord.gg/emails](https://discord.gg/emails).
 
